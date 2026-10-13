@@ -6,7 +6,7 @@
     "type": "module",
     "license": "ISC",
     "dependencies": {
-        "@modelcontextprotocol/sdk": "^1.10.2",
+        "@modelcontextprotocol/sdk": "^1.31.0",
         "@netlify/functions": "^2.5.1",
         "@types/express": "^5.0.1",
         "express": "^5.1.0",
