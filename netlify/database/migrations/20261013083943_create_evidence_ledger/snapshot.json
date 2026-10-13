@@ -1,0 +1,267 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "254395de-0c84-4bfc-bc76-90e96392f323",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "name": "omni333",
+      "entityType": "schemas"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "evidence_ledger",
+      "entityType": "tables",
+      "schema": "omni333"
+    },
+    {
+      "type": "bigint",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "seq",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "entry_type",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "subject_ref",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "actor_ari",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "actor_type",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "clearance_level",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "payload_jcs",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "recorded_at",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "type": "char(128)",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "hash_prev",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "type": "char(128)",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "hash_self",
+      "entityType": "columns",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "subject_ref",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "seq",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "evidence_ledger_subject_ref_idx",
+      "entityType": "indexes",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "columns": [
+        "seq"
+      ],
+      "nameExplicit": false,
+      "name": "evidence_ledger_pkey",
+      "schema": "omni333",
+      "table": "evidence_ledger",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "hash_prev"
+      ],
+      "nullsNotDistinct": false,
+      "name": "evidence_ledger_hash_prev_key",
+      "schema": "omni333",
+      "table": "evidence_ledger",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "hash_self"
+      ],
+      "nullsNotDistinct": false,
+      "name": "evidence_ledger_hash_self_key",
+      "schema": "omni333",
+      "table": "evidence_ledger",
+      "entityType": "uniques"
+    },
+    {
+      "value": "\"seq\" >= 1",
+      "name": "evidence_ledger_seq_positive",
+      "entityType": "checks",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "value": "\"entry_type\" IN ('TAP_RESULT', 'EVIDENCE', 'CAB_VOTE')",
+      "name": "evidence_ledger_entry_type_valid",
+      "entityType": "checks",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "value": "\"actor_type\" IN ('human', 'ci')",
+      "name": "evidence_ledger_actor_type_valid",
+      "entityType": "checks",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "value": "\"clearance_level\" IN ('NV2', 'PV')",
+      "name": "evidence_ledger_clearance_valid",
+      "entityType": "checks",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "value": "\"actor_ari\" LIKE 'ari:%'",
+      "name": "evidence_ledger_actor_ari_valid",
+      "entityType": "checks",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "value": "\"entry_type\" <> 'CAB_VOTE' OR \"actor_type\" = 'human'",
+      "name": "evidence_ledger_cab_vote_human",
+      "entityType": "checks",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "value": "\"hash_prev\" ~ '^[0-9a-f]{128}$'",
+      "name": "evidence_ledger_hash_prev_hex",
+      "entityType": "checks",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    },
+    {
+      "value": "\"hash_self\" ~ '^[0-9a-f]{128}$'",
+      "name": "evidence_ledger_hash_self_hex",
+      "entityType": "checks",
+      "schema": "omni333",
+      "table": "evidence_ledger"
+    }
+  ],
+  "renames": []
+}
